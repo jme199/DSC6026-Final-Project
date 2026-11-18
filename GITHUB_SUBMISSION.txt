@@ -1,0 +1,68 @@
+DSC6026 Final Project GitHub 提交清单
+
+每位成员负责 push 自己的分析代码、正式 CSV、图表和报告章节。路径均相对于仓库根目录。分析脚本和个人 Markdown 文件名按本清单统一拟定。
+
+成员 A　网络构建与中心性分析
+先 push facebook_edges.csv 和 centrality_scores.csv，供其他成员共用。
+再 push network_centrality.py、network_stats.csv、network_figures/ 和 report/A_network_centrality.md。
+报告章节包括数据说明、网络描述统计和中心性分析。
+
+成员 B　社区检测与结构块分析
+Push community_analysis.py、louvain_communities.csv、sbm_block_labels.csv、block_connectivity_matrix.csv、bridge_analysis.csv、community_figures/ 和 report/B_community_structure.md。
+报告章节包括 Louvain、度校正 SBM 和桥梁分析，注明 graph-tool 版本。
+
+成员 C　IC 扩散与种子策略
+先 push ic_core.py，供 D、E 引用。
+再 push seed_diffusion.py、seed_diffusion_trials.csv、seed_diffusion_summary.csv、diffusion_figures/ 和 report/C_seed_diffusion.md。
+正式逐次结果为 2,000 条。报告章节包括 IC 方法、种子策略实验与 RQ1 结果。
+
+成员 D　节点移除与网络鲁棒性
+Push structural_removal.py、structural_removal_results.csv、structural_removal_summary.csv、robustness_figures/ 和 report/D_network_robustness.md。
+正式结构记录为 53 条，含原图 1 条、定向移除 2 条以及随机移除 50 条。报告章节包括节点移除方法和结构鲁棒性结果。
+
+成员 E　节点干预后的扩散
+Push intervention_diffusion.py、intervention_diffusion_trials.csv、intervention_diffusion_summary.csv、diffusion_impact_comparison.csv、intervention_figures/ 和 report/E_intervention_diffusion.md。
+正式逐次结果为 4,000 条。报告章节包括干预扩散结果、综合讨论和结论。
+
+全组交付
+成员 mj push Final_Experiment_Protocol.md 和本清单 GITHUB_SUBMISSION.txt。
+全组整合并审核报告，成员 anyone 负责 push Final_Report.pdf。
+D 和 E 核对 Trial_ID 0–49 的随机移除节点集合。C 和 E 使用同一版本的 ic_core.py。正式 CSV 使用正式实验记录。
+
+总体文件框架图
+
+DSC6026-Final-Project/
+├── GITHUB_SUBMISSION.txt                 [mj]
+├── Final_Experiment_Protocol.md          [mj]
+├── Final_Report.pdf                      [anyone push，全组审核]
+├── network_centrality.py                 [A]
+├── facebook_edges.csv                    [A]
+├── network_stats.csv                     [A]
+├── centrality_scores.csv                [A]
+├── network_figures/                      [A]
+├── community_analysis.py                [B]
+├── louvain_communities.csv               [B]
+├── sbm_block_labels.csv                  [B]
+├── block_connectivity_matrix.csv        [B]
+├── bridge_analysis.csv                  [B]
+├── community_figures/                    [B]
+├── ic_core.py                            [C]
+├── seed_diffusion.py                     [C]
+├── seed_diffusion_trials.csv             [C]
+├── seed_diffusion_summary.csv            [C]
+├── diffusion_figures/                    [C]
+├── structural_removal.py                [D]
+├── structural_removal_results.csv       [D]
+├── structural_removal_summary.csv       [D]
+├── robustness_figures/                   [D]
+├── intervention_diffusion.py            [E]
+├── intervention_diffusion_trials.csv     [E]
+├── intervention_diffusion_summary.csv    [E]
+├── diffusion_impact_comparison.csv      [E]
+├── intervention_figures/                 [E]
+└── report/
+    ├── A_network_centrality.md           [A]
+    ├── B_community_structure.md          [B]
+    ├── C_seed_diffusion.md               [C]
+    ├── D_network_robustness.md           [D]
+    └── E_intervention_diffusion.md       [E]
