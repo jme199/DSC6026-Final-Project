@@ -1,0 +1,2 @@
+Nodes,Edges,Density,Average_Degree,Average_Clustering_Coefficient,Connected_Components,GCC_Nodes,GCC_Fraction,Average_Shortest_Path_GCC,Input_Data_Lines,Self_Loops_Removed,Duplicate_Edges_Removed,Malformed_Lines_Skipped
+4039,88234,0.010819963503439287,43.69101262688784,0.60554671862008624,1,4039,1,3.6925068496963913,88234,0,0,0
