@@ -1,15 +1,13 @@
 """Member B: analyze the shared SNAP Facebook graph on CPU.
 
 Run from the repository with `python community_analysis.py`. The script uses
-Member A's edge list and full-precision centrality rankings. Use --raw-snap
-to verify a separately downloaded text or gzip edge list against the input.
+Member A's `facebook_edges.csv` and `centrality_scores.csv`.
 """
 
 from __future__ import annotations
 
 import argparse
 import csv
-import gzip
 import hashlib
 import json
 import math
@@ -39,7 +37,7 @@ LOUVAIN_PARAMETERS = dict(weight=None, resolution=1, threshold=1e-7, seed=602610
 SBM_SEEDS = range(602620, 602625)
 
 
-def load_inputs(edge_path, score_path, raw_path):
+def load_inputs(edge_path, score_path):
     with edge_path.open(encoding="utf-8", newline="") as stream:
         edges = [(int(row["Source"]), int(row["Target"])) for row in csv.DictReader(stream)]
     nodes = sorted({node for edge in edges for node in edge})
@@ -50,16 +48,6 @@ def load_inputs(edge_path, score_path, raw_path):
         or any(left >= right for left, right in zip(edges, edges[1:]))
     ):
         raise ValueError("Expected the sorted, unique, undirected Facebook edges from Member A")
-    if raw_path is not None:
-        open_raw = gzip.open if raw_path.suffix == ".gz" else open
-        with open_raw(raw_path, "rt", encoding="utf-8") as stream:
-            raw_edges = {
-                tuple(sorted(map(int, line.split()))) for line in stream
-                if line.strip() and not line.lstrip().startswith("#")
-            }
-        if sorted(raw_edges) != edges:
-            raise ValueError("The downloaded SNAP file and Member A's edge table differ")
-
     with score_path.open(encoding="utf-8", newline="") as stream:
         score_rows = list(csv.DictReader(stream))
     scores = {int(row["Node_ID"]): row for row in score_rows}
@@ -275,11 +263,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--edges", type=Path, default=ROOT / "facebook_edges.csv")
     parser.add_argument("--centrality", type=Path, default=ROOT / "centrality_scores.csv")
-    parser.add_argument("--raw-snap", type=Path)
     parser.add_argument("--output-dir", type=Path, default=ROOT)
     args = parser.parse_args()
 
-    graph, nodes, edges, scores = load_inputs(args.edges, args.centrality, args.raw_snap)
+    graph, nodes, edges, scores = load_inputs(args.edges, args.centrality)
     communities = order_groups(nx.community.louvain_communities(graph, **LOUVAIN_PARAMETERS))
     modularity = nx.community.modularity(graph, communities, weight=None, resolution=1)
     blocks, best_seed, trials = fit_sbm(nodes, edges)

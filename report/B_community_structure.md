@@ -1,6 +1,6 @@
 # Community structure and bridge nodes
 
-Member B analyzed the combined SNAP Facebook ego network using Member A's canonical edge list and centrality rankings. The local download and the shared edge list represent the same 4,039 nodes and 88,234 undirected, unweighted friendship edges. [SNAP dataset](https://snap.stanford.edu/data/ego-Facebook.html)
+Following the team protocol, Member B used Member A's `facebook_edges.csv` and `centrality_scores.csv` as the two inputs. The shared graph has 4,039 nodes and 88,234 undirected, unweighted friendship edges from the combined SNAP Facebook ego network. [Team protocol](../Final_Experiment_Protocol.md) · [SNAP dataset](https://snap.stanford.edu/data/ego-Facebook.html)
 
 ## Louvain communities
 
@@ -51,10 +51,9 @@ Run these commands from the repository root. The recorded execution used macOS o
 conda create -n dsc6026-b --override-channels -c conda-forge \
   python=3.12.7 numpy=1.26.4 scipy=1.16.3 networkx=3.3 \
   graph-tool-base=3.9 matplotlib-base=3.11.2
-conda run -n dsc6026-b python community_analysis.py \
-  --raw-snap data/raw/facebook_combined.txt.gz
+conda run -n dsc6026-b python community_analysis.py
 ```
 
-The script reads `facebook_edges.csv` and `centrality_scores.csv`. It accepts plain text or gzip for the optional edge-list check and writes results to the repository root by default. Use `--output-dir` to write to a separate directory. All CSV files are UTF-8. Node IDs are original integers. Community and block IDs start at 1 and are ordered by size, with equal sizes ordered by smallest node ID. The bridge CSV contains one row per distinct node from either Top-20 list and separate membership flags. Exact run statistics and library versions are in the [analysis summary](../community_analysis_summary.json).
+Place Member A's `facebook_edges.csv` and `centrality_scores.csv` beside the script. It writes results to the repository root by default. Use `--output-dir` to write to a separate directory. All CSV files are UTF-8. Node IDs are original integers. Community and block IDs start at 1 and are ordered by size, with equal sizes ordered by smallest node ID. The bridge CSV contains one row per distinct node from either Top-20 list and separate membership flags. Exact run statistics and library versions are in the [analysis summary](../community_analysis_summary.json).
 
 For Overleaf, use [B_main.tex](B_main.tex) as the standalone main file and include the [section](B_community_structure.tex), [bibliography](B_references.bib), [NeurIPS 2025 style](neurips_2025.sty), and the [four figures](../community_figures/). For the group report, include the section and merge the BibTeX entries into the group's bibliography. The main file uses author–year citations via `natbib` and `plainnat`.
