@@ -11,24 +11,10 @@
 \graphicspath{{community_figures/}{../community_figures/}}
 \setcitestyle{authoryear,round}
 
-\title{Community Structure and Bridge Nodes in the SNAP Facebook Network}
-\author{DSC6026 Final Project Team\\Member B}
-
 \begin{document}
-\maketitle
-
-\begin{abstract}
-We compare Louvain communities and degree-corrected stochastic block model
-(SBM) groups on the combined SNAP Facebook ego network. Louvain found 16
-communities with modularity 0.835, while the minimum-description-length SBM
-fit found 60 structural blocks. The adjusted Rand index between the two
-partitions was 0.374. The top 20 nodes by betweenness had larger mean
-fractions of incident edges crossing communities and blocks than the top 20
-by PageRank. The rankings overlapped on 10 nodes and had nearly equal mean
-counts of edges crossing SBM blocks. These comparisons characterize where
-the two sets sit in the network used for the team's diffusion experiments.
-\end{abstract}
-
+% The full report assigns this number when it includes the section after Section 1.
+\setcounter{section}{1}
+\suppressfloats[t]
 \input{B_community_structure}
 
 \bibliographystyle{plainnat}

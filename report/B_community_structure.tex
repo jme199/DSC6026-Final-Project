@@ -1,8 +1,8 @@
 \section{Community structure and bridge nodes}
 \label{sec:facebook-community}
 
-Following the team protocol, we used the canonical edge list and original-graph
-centrality rankings released by Member A. The graph derives from the
+We used the shared canonical edge list and original-graph centrality rankings.
+The graph derives from the
 \href{https://snap.stanford.edu/data/ego-Facebook.html}{SNAP Facebook ego-network
 collection} of \citet{mcauley2012social}. It contains
 4,039 anonymized accounts and 88,234 undirected, unweighted friendship edges,
@@ -18,7 +18,7 @@ partition contained 16 communities ranging from 19 to 548 nodes
 edges (96.09\%) were within a community. The partition thus provides a coarse
 view of where friendship ties concentrate.
 
-\begin{figure}[tbp]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.9\linewidth]{partition_sizes.pdf}
   \caption{Group sizes in descending order. The vertical axis is logarithmic.
@@ -39,7 +39,7 @@ five fits. The selected fit contained 60 occupied blocks with sizes from 1
 to 206. The subgraphs induced by 17 of the 60 blocks were disconnected,
 illustrating that a block can group nodes with similar connection patterns.
 
-\begin{table}[tbp]
+\begin{table}[htbp]
   \caption{Single-level degree-corrected SBM fits. Seed 602620 produced the
   shortest description length among the five runs.}
   \label{tab:facebook-sbm-trials}
@@ -65,7 +65,7 @@ for a singleton. Of the 1,770 distinct off-diagonal block pairs, 1,433
 (81.0\%) shared zero edges. Within-block edges accounted for 64.55\% of all
 edges (Figure~\ref{fig:facebook-density}).
 
-\begin{figure}[tbp]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.74\linewidth]{block_connectivity_heatmap.pdf}
   \caption{Empirical SBM block-pair densities. The color scale is logarithmic
@@ -85,7 +85,7 @@ across eight SBM blocks, with its two largest contributions containing 143 and
 SBM block (Figure~\ref{fig:facebook-overlap}). The two partitions agree on
 some local groups and provide different resolutions of the larger groups.
 
-\begin{figure}[tbp]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.92\linewidth]{partition_overlap.pdf}
   \caption{Membership overlap between Louvain and SBM. Each row sums to
@@ -104,7 +104,7 @@ those nodes in each Top-20 mean and examined the disjoint subsets separately.
 Each ranking occupied eight Louvain communities. The PageRank and
 betweenness sets occupied 14 and 16 SBM blocks, respectively.
 
-\begin{table}[tbp]
+\begin{table}[htbp]
   \caption{Mean fractions and counts of a node's incident edges crossing
   Louvain communities or SBM blocks. Each node receives equal weight.}
   \label{tab:facebook-bridges}
@@ -139,7 +139,7 @@ communities and 1,045 crossing blocks. Its SBM block was a singleton, so a
 100\% cross-block share follows from its assignment. Its 611 cross-community
 ties provide separate evidence of its reach across the coarser partition.
 
-\begin{figure}[tbp]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=0.94\linewidth]{top20_bridging.pdf}
   \caption{Per-node bridge profiles. Each distinct node in either ranking
